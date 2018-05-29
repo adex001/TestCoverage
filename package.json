@@ -7,7 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "nyc mocha"
+    "test": "cross-env NODE_ENV=test && nyc --reporter=html --reporter=text mocha --timeout 20000 --exit --require babel-core/register ./test/",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "migrate:dev": "babel-node ./server/db/db.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,10 @@
   },
   "homepage": "https://github.com/adex001/TestCoverage#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
     "coveralls": "^3.0.1",
     "express": "^4.16.3",
