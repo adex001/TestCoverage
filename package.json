@@ -9,8 +9,7 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test && nyc --reporter=html --reporter=text mocha --timeout 20000 --exit --require babel-core/register ./test/",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "migrate:dev": "babel-node ./server/db/db.js"
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",
